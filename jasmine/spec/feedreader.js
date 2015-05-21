@@ -88,8 +88,18 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test wil require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-        it('should contain at least one thing', function() {
-            expect(thisTest).toFail();
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                done();
+            });
+        });
+
+        // I'm not sure this is exactly what the spec wants, but it works
+        // We're basically checking that an empty div gets populated
+        // with an anchor that has a specific class attribute
+        it('should contain at least one thing', function(done) {
+            expect($('.feed a').hasClass('entry-link')).toBe(true);
+            done();
         });
     });
 
