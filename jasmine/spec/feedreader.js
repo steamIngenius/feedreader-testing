@@ -94,19 +94,21 @@ $(function() {
             });
         });
 
-        // I'm not sure this is exactly what the spec wants, but it works
-        // We're basically checking that an empty div gets populated
-        // with an anchor that has a specific class attribute
+        // fixed this so it's more inline with the requirements
         it('should contain at least one thing', function(done) {
-            expect($('.feed a').hasClass('entry-link')).toBe(true);
+            // the .feed <div> shouldn't be empty
+            var contents = $.trim($('.feed').html());
+            expect(contents == '').toBe(false);
             done();
         });
     });
 
-    /* TODO: Write a new test suite named "New Feed Selection"
+    /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', function() {
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+    });
 }());
