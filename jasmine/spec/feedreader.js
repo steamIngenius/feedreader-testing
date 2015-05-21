@@ -106,9 +106,26 @@ $(function() {
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
 
+        var oContent,   // content from first loadFeed
+            nContent;   // content from second loadFeed
+
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                oContent = $('.feed').html();
+            });
+            loadFeed(1, function() {
+                nContent = $('.feed').html();
+                done();  // seems janky but totally works
+            });
+        });
+
+        it('should contain different articles', function(done) {
+            expect(oContent).not.toEqual(nContent);
+            done();
+        });
     });
 }());
