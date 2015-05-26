@@ -116,10 +116,10 @@ $(function() {
         beforeEach(function(done) {
             loadFeed(0, function() {
                 oContent = $('.feed').html();
-            });
-            loadFeed(1, function() {
-                nContent = $('.feed').html();
-                done();  // seems janky but totally works
+                loadFeed(1, function() {
+                    nContent = $('.feed').html();
+                    done();  // should be better now (no race condition)
+                });
             });
         });
 
