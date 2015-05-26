@@ -98,7 +98,7 @@ $(function() {
         it('should contain at least one thing', function(done) {
             // the .feed <div> shouldn't be empty
             var contents = $.trim($('.feed').html());
-            expect(contents == '').toBe(false);
+            expect(contents === '').toBe(false);
             done();
         });
     });
